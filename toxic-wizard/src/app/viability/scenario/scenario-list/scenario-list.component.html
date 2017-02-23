@@ -1,0 +1,87 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Scenario List
+        </div>
+        <div class="card-block">
+          <div class="col-xs-12">
+
+            <div class="row" style="background-color:white;">
+              <div class="col-sm-8">
+                <form class="form-inline">
+
+                  <div class="form-group">
+                    <select class="form-control" style="min-width: 4em;" (change)="onSearchResultsLengthChange($event.target.value)">
+                      <option selected>10</option>
+                      <option>25</option>
+                      <option>50</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search table for ..">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-sm-4 text-right">
+                <button type="button" class="btn btn-info" (click)='createScenario()'>Create Scenario</button>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class=row>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Scenario</th>
+                    <th>Years</th>
+                    <th>Last Modified</th>
+                    <th>Modified by</th>
+                    <th>Snapshots</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Some Snapshot</td>
+                    <td>10</td>
+                    <td>01/01/2017</td>
+                    <td>Chris Devine</td>
+                    <td>2</td>
+                    <td class="text-right">
+                      <button type="button" class="btn btn-info" (click)='editScenario()'>Edit Scenario</button>
+                    </td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="row justify-content-center">
+
+              <pagination (pageChanged)="pageChanged($event)" [totalItems]="this.pagnation.totalItems" [(ngModel)]="pagnation.pageNumber"
+                [maxSize]="pagnation.resultsLength" class="pagination-sm" [boundaryLinks]="true"></pagination>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

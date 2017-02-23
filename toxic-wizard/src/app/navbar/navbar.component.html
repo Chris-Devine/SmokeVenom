@@ -1,0 +1,93 @@
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
+    <a class="navbar-brand" href="#"></a>
+    <ul class="nav navbar-nav hidden-md-down">
+        <li class="nav-item">
+            <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
+        </li>
+        <li class="nav-item px-1">
+            <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li *ngIf="canUseViabilityPolicy" class="nav-item px-1">
+            <a class="nav-link" [routerLink]="['/viability']">Viability</a>
+        </li>
+    </ul>
+
+    <ul class="nav navbar-nav ml-auto float-right" [hidden]="userIsLoggedIn">
+        <li>
+            <button type="button" class="btn btn-primary mr-1" (click)='redirectToLogin()'>Login</button>
+        </li>
+    </ul>
+
+
+    <!-- TODO: refactor out the notifications and such seen below into nested components for now leave here as a display of what could be -->
+    <ul class="nav navbar-nav ml-auto mr-1" [hidden]="!userIsLoggedIn">
+
+        <li class="nav-item dropdown hidden-md-down" dropdown>
+            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle
+                [addToggleClass]="false">
+                <i class="icon-bell"></i>
+                <span class="badge badge-pill badge-danger">5</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg" dropdownMenu aria-labelledby="simple-dropdown">
+
+                    <div class="dropdown-header text-center">
+                        <strong>You have 5 notifications</strong>
+                    </div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="icon-user-follow text-success"></i> Assets uploaded ok <span class="badge badge-info">NEW</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="icon-user-unfollow text-danger"></i> Assets spreadsheet processing
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="icon-chart text-info"></i> Assets spreadsheet upload qued
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="icon-basket-loaded text-primary"></i> You Failed
+                    </a>
+
+                    <div class="dropdown-header text-center">
+                        <strong>Server</strong>
+                    </div>
+
+                    <a href="#" class="dropdown-item">
+                        <div class="text-uppercase mb-q">
+                            <small><b>CPU Usage</b>
+                        </small>
+                        </div>
+                        <span class="progress progress-xs">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </span>
+                        <small class="text-muted">348 Processes. 1/4 Cores.</small>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <div class="text-uppercase mb-q">
+                            <small><b>Memory Usage</b>
+                        </small>
+                        </div>
+                        <span class="progress progress-xs">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </span>
+                        <small class="text-muted">11444GB/16384MB</small>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <div class="text-uppercase mb-q">
+                            <small><b>SSD 1 Usage</b>
+                        </small>
+                        </div>
+                        <span class="progress progress-xs">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                    </span>
+                        <small class="text-muted">243GB/256GB</small>
+                    </a>
+
+                </div>
+        </li>
+
+
+
+        <app-user-dropdown></app-user-dropdown>
+    </ul>
+</header>

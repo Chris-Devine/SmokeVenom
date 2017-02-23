@@ -1,0 +1,255 @@
+<app-non-financial-list-scores-modal></app-non-financial-list-scores-modal>
+<app-non-financial-integer-scores-modal></app-non-financial-integer-scores-modal>
+<app-non-financial-decimal-scores-modal></app-non-financial-decimal-scores-modal>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Snapshot List
+        </div>
+        <div class="card-block">
+
+          <tabset>
+
+            <tab heading="General" [active]="activeTab === 0 ? true : false" (select)='tabClick(0)'>
+              <div class="pt-2 pl-2 pb-2 pr-2" style="background-color: white;">
+                <div class="form-group">
+                  <label for="scenarioName">Scenario Name</label>
+                  <input type="text" class="form-control" id="scenarioName" aria-describedby="Scenario name" placeholder="Scenario Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="scenarioDescription">Scenario Description</label>
+                  <input type="text" class="form-control" id="scenarioDescription" aria-describedby="Scenario description" placeholder="Scenario Description"
+                    required>
+                </div>
+                <hr>
+                <div class="text-right">
+                  <button type="button" class="btn btn-primary" (click)='nextTab()'>Next</button>
+                </div>
+              </div>
+            </tab>
+
+            <tab heading="Financial" [active]="activeTab === 1 ? true : false" (select)='tabClick(1)'>
+              <div class="pt-2 pl-2 pb-2 pr-2" style="background-color: white;">
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="dcfFactor">DCF Factor</label>
+                      <input type="number" class="form-control" id="dcfFactor" aria-describedby="DCF Factor" placeholder="DCF Factor" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="scenarioYears">Scenario Years</label>
+                      <input type="number" class="form-control" id="scenarioYears" aria-describedby="Scenario years" placeholder="Scenario Years"
+                        required>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="scenarioValuation">Valuation to include in NPV</label>
+                      <select class="form-control" id="scenarioValuation" aria-describedby="Scenario Valuation">
+                        <option value="None">None</option>
+                        <option value= 1>
+                          Market Valaue
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="pt-2 pl-2 pb-2 pr-2" style="background-color: white;">
+                    <h6>Income Types</h6>
+                    <div>
+                      <table class="table table-sm">
+                        <tr>
+                          <th>Rent</th>
+                          <th>Year 1</th>
+                          <th>Year 2</th>
+                          <th>Year 3</th>
+                          <th>Year 4</th>
+                          <th>Year 5</th>
+                          <th>Year 6</th>
+                          <th>Year 7</th>
+                          <th>Year 8</th>
+                          <th>Year 9</th>
+                          <th>Year 10</th>
+                        </tr>
+                        <tr>
+                          <td>Perctage Variation %</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="pt-2 pl-2 pb-2 pr-2" style="background-color: white;">
+                    <h6>Outgoing Types</h6>
+                    <div>
+                      <table class="table table-sm">
+                        <tr>
+                          <th>Rent</th>
+                          <th>Year 1</th>
+                          <th>Year 2</th>
+                          <th>Year 3</th>
+                          <th>Year 4</th>
+                          <th>Year 5</th>
+                          <th>Year 6</th>
+                          <th>Year 7</th>
+                          <th>Year 8</th>
+                          <th>Year 9</th>
+                          <th>Year 10</th>
+                        </tr>
+                        <tr>
+                          <td>Perctage Variation %</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" (click)='previousTab()'>Previous</button>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <button type="button" class="btn btn-primary" (click)='nextTab()'>Next</button>
+                  </div>
+                </div>
+              </div>
+            </tab>
+
+            <tab heading="Non-Financial" [active]="activeTab === 2 ? true : false" (select)='tabClick(2)'>
+              <div class="pt-2 pl-2 pb-2 pr-2" style="background-color: white;">
+                <table class="table">
+                  <tr>
+                    <th>Selected</th>
+                    <th>KPI</th>
+                    <th>Weighting</th>
+                    <th>Action</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="custom-control custom-checkbox">
+                        <input type="checkbox" name="isSelected" class="custom-control-input" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description invisible" style="color:white;">is selected</span>
+                      </label>
+                    </td>
+                    <td>Number of Repairs list</td>
+                    <td>
+                      <input type="number" class="form-control" style="min-width:70px" required>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" (click)='tempShowNonFinancialListScoresModalComponent()'>Edit Scores</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="custom-control custom-checkbox">
+                        <input type="checkbox" name="isSelected" class="custom-control-input" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description invisible" style="color:white;">is selected</span>
+                      </label>
+                    </td>
+                    <td>Number of Repairs int</td>
+                    <td>
+                      <input type="number" class="form-control" style="min-width:70px" required>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" (click)='tempShowNonFinancialIntScoresModalComponent()'>Edit Scores</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="custom-control custom-checkbox">
+                        <input type="checkbox" name="isSelected" class="custom-control-input" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description invisible" style="color:white;">is selected</span>
+                      </label>
+                    </td>
+                    <td>Number of Repairs dec</td>
+                    <td>
+                      <input type="number" class="form-control" style="min-width:70px" required>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" (click)='tempShowNonFinancialDecScoresModalComponent()'>Edit Scores</button>
+                    </td>
+                  </tr>
+                </table>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" (click)='previousTab()'>Previous</button>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <button type="button" class="btn btn-primary " (click)='nextTab()'>Next</button>
+                  </div>
+                </div>
+              </div>
+            </tab>
+
+            <tab heading="Snapshots" [active]="activeTab === 3 ? true : false" (select)='tabClick(3)'>
+              <div class="pt-2 pl-2 pb-2 pr-2" style="background-color: white;">
+                <table class="table">
+                  <tr>
+                    <th>Selected</th>
+                    <th>Snapshot Name</th>
+                    <th>Last Calculated</th>
+                    <th>Calculate</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description" style="color:white;">is selected</span>
+                      </label>
+                    </td>
+                    <td>Snapshot A</td>
+                    <td>Never</td>
+                    <td>
+                      <button type="button" class="btn btn-danger">Re-Calculate</button>
+                    </td>
+                  </tr>
+                </table>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <button type="button" class="btn btn-primary" (click)='previousTab()'>Previous</button>
+                  </div>
+                </div>
+              </div>
+            </tab>
+
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

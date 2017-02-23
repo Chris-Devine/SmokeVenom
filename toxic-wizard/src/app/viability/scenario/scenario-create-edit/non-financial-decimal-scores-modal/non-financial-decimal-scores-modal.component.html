@@ -1,0 +1,100 @@
+<div bsModal #nonFinancialDecimalScoresModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Scores: {{scenarioKpiVM.Name}}</h4>
+        <button type="button" class="close" (click)="nonFinancialDecimalScoresModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+      </div>
+      <div class="modal-body">
+
+
+        <form [formGroup]="form" novalidate>
+          <div class="form-group" [ngClass]="{'has-danger':!form.controls['Name'].valid && form.controls['Name'].touched}">
+            <label>Name:</label>
+            <input class="form-control" type="text" placeholder="John" [formControl]="form.controls['Name']">
+            <div *ngIf="form.controls['Name'].hasError('required') && form.controls['Name'].touched" class="alert alert-danger">You must include a first Name.</div>
+            <div *ngIf="form.controls['Name'].hasError('minlength') && form.controls['Name'].touched" class="alert alert-danger">Your first Name must be at least 4 characters long.</div>
+          </div>
+          <table class="table" formArrayName="Scores">
+            <tr>
+              <th>From</th>
+              <th>Operators</th>
+              <th>To</th>
+              <th>Score (0 - 5)</th>
+            </tr>
+            <tr *ngFor="let score of form.controls.Scores.controls; let i = index" [formGroupName]="i">
+              <td>
+                <div [ngClass]="{'has-danger':!score.controls['StartValue'].valid && score.controls['StartValue'].touched}">
+                  <input type="text" class="form-control cell-min-width" [formControl]="score.controls['StartValue']">
+                </div>
+              </td>
+              <td>
+                <p *ngIf="i === 0">
+                  <=< /p>
+                    <p *ngIf="i !== 0"> > and
+                      <=</p>
+              </td>
+              <td>
+                <div [ngClass]="{'has-danger':!score.controls['EndValue'].valid && score.controls['EndValue'].touched}">
+                  <input type="number" class="form-control cell-min-width" [formControl]="score.controls['EndValue']" />
+                </div>
+              </td>
+              <td>
+                <div [ngClass]="{'has-danger':!score.controls['Score'].valid && score.controls['Score'].touched}">
+                  <input type="number" class="form-control cell-min-width" [formControl]="score.controls['Score']">
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="removeScoreObjectToScoresArray(i)">Remove</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="checkAssetsInKpiScoreRange(score)">Check</button>
+              </td>
+              <td>
+                {{score.controls['PercentOfProps'].value | percent:'.0-2'}}
+              </td>
+            </tr>
+          </table>
+        </form>
+
+
+        <!--        <div class="col-sm-12">
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group has-danger">
+                <label for="snapshotName">Snapshot Name</label>
+                <input type="text" class="form-control form-control-danger" id="snapshotName" placeholder="Enter the snapshot name">
+                <span class="help-block text-danger">This error text display place</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="isCurrentOptionsGroup">Is Current Snapshot</label>
+              <div class="btn-group text-right" id="isCurrentOptionsGroup">
+                <label class="btn btn-primary" name="isCurrentOptions" [(ngModel)]="radioModel" btnRadio="Yes">Yes</label>
+                <label class="btn btn-primary" name="isCurrentOptions" [(ngModel)]="radioModel" btnRadio="No">No</label>
+              </div>
+            </div>
+          </div>
+
+        </div>-->
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="nonFinancialDecimalScoresModal.hide()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addScoreObjectToScoresArray()">Add Row</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->

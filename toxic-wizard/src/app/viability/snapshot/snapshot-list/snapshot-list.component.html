@@ -1,0 +1,130 @@
+<app-snapshot-create-modal></app-snapshot-create-modal>
+<app-snapshot-edit-modal></app-snapshot-edit-modal>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Snapshot List
+        </div>
+        <div class="card-block">
+          <div class="col-xs-12">
+
+            <div class="row" style="background-color:white;">
+              <div class="col-sm-8">
+                <form class="form-inline">
+
+                  <div class="form-group">
+                    <select class="form-control" style="min-width: 4em;" (change)="onSearchResultsLengthChange($event.target.value)">
+                      <option selected>10</option>
+                      <option>25</option>
+                      <option>50</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search table for ..">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-sm-4 text-right">
+                <button type="button" class="btn btn-info" (click)='createSnapshot()'>Create Snapshot</button>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class=row>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Snapshot</th>
+                    <th>Is Current</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Some Snapshot</td>
+                    <td>
+                      <span class="badge badge-success">Current</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info pull-right" (click)='editSnapshot()'>Edit Snapshot</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Another Snapshot</td>
+                    <td>
+                      <span class="badge badge-default">Not Current</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info pull-right" (click)='editSnapshot()'>Edit Snapshot</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Another Snapshot</td>
+                    <td>
+                      <span class="badge badge-default">Not Current</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info pull-right" (click)='editSnapshot()'>Edit Snapshot</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Another Snapshot</td>
+                    <td>
+                      <span class="badge badge-default">Not Current</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info pull-right" (click)='editSnapshot()'>Edit Snapshot</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Another Snapshot</td>
+                    <td>
+                      <span class="badge badge-default">Not Current</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info pull-right" (click)='editSnapshot()'>Edit Snapshot</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Another Snapshot</td>
+                    <td>
+                      <span class="badge badge-default">Not Current</span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info pull-right" (click)='editSnapshot()'>Edit Snapshot</button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="row justify-content-center">
+
+              <pagination (pageChanged)="pageChanged($event)" [totalItems]="this.pagnation.totalItems" [(ngModel)]="pagnation.pageNumber"
+                [maxSize]="pagnation.resultsLength" class="pagination-sm" [boundaryLinks]="true"></pagination>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

@@ -1,0 +1,72 @@
+<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Snapshot</h4>
+        <button type="button" class="close" (click)="createModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="col-sm-12">
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group has-success">
+                <label for="snapshotName">Snapshot Name</label>
+                <input type="text" class="form-control form-control-success" id="snapshotName" placeholder="Enter the snapshot name">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="isCurrentOptionsGroup">Is Current Snapshot</label>
+              <div class="btn-group text-right" id="isCurrentOptionsGroup">
+                <label class="btn btn-primary" name="isCurrentOptions" [(ngModel)]="radioModel" btnRadio="Yes">Yes</label>
+                <label class="btn btn-primary" name="isCurrentOptions" [(ngModel)]="radioModel" btnRadio="No">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="isCurrentOptionsGroup">Copy from Snapshot</label>
+
+              <div class="btn-group text-right" id="copyFromSnapshotOptionsGroup">
+                <label class="btn btn-primary" name="copyFromSnapshotOptions" [(ngModel)]="copySnapshot" btnRadio="true">Yes</label>
+                <label class="btn btn-primary" name="copyFromSnapshotOptions" [(ngModel)]="copySnapshot" btnRadio="false">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12" [hidden]="(copySnapshot == 'false')">
+              <label for="isCurrentOptionsGroup">Select snapshot to copy from</label>
+
+              <label for="ccyear">Year</label>
+              <select class="form-control" id="ccyear">
+                <option>Snapshot a</option>
+                <option>Snapshot b</option>
+
+              </select>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="createModal.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

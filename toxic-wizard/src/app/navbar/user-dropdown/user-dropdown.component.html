@@ -1,0 +1,22 @@
+<li class="nav-item dropdown" dropdown>
+  <a class="nav-link avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle
+    [addToggleClass]="false">
+    <img src="assets/genius/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="simple-dropdown">
+
+      <div class="dropdown-header text-center">
+        <strong>Account</strong>
+      </div>
+      <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
+
+      <div class="dropdown-header text-center">
+        <strong>Settings</strong>
+      </div>
+      <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+      <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
+
+      <button type="button" class="btn btn-link dropdown-item" (click)="userLogout()"><i class="fa fa-lock"></i>Logout</button>
+
+    </div>
+</li>
