@@ -9,10 +9,12 @@ import { SharedModule } from './shared/shared.module'
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarModule } from './navbar/navbar.module'
 import { LoginCallbacksModule } from './login-callbacks/login-callbacks.module'
+
 import { HomeModule } from './home/home.module';
 import { ViabilityModule } from './viability/viability.module'
 
 import { AppComponent } from './app.component';
+import { CodeExamplesModule } from './code-examples/code-examples.module';
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
     ErrorPagesModule,
     LoginCallbacksModule,
     NavbarModule,
+    CodeExamplesModule,
     HomeModule,
     ViabilityModule,
     CoreModule,
@@ -32,7 +35,7 @@ import { AppComponent } from './app.component';
   ],
   providers: [],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [
     AppComponent
